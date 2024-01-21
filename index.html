@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        form {
+            width: 400px;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            
+        }
+        input {
+            width: 95%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+             background-color: #45a049;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            width: 100%;
+        }
+
+        footer a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #e3410b;
+        }
+
+        .github-link {
+            color: #cd0a0a;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://i.im.ge/2024/01/21/YyNuIc.gitbest2.png" width="200" alt="GitBest Logo">
+
+    <h2>Sign in to Form</h2>
+    <form id="loginGitbest">
+        
+        <label for="username">Username or email address:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
+    <footer>
+        <p>© 2024 Alexsandra T. | <a href="https://github.com/alexsabrasil" target="blank" class="github-link">Repositório</a></p>
+        <p> Programação Web Full Stack - Campinho Digital </p>
+    </footer>
+
+    <script>
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    alert(`Login Successful! Token: ${data.token}`);
+                } else {
+                    alert('Login Failed. Please check your credentials.');
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+                alert('An error occurred during login. Please try again later.');
+            }
+        }
+    </script>
+</body>
+</html>

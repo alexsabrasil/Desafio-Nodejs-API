@@ -1,0 +1,25 @@
+{
+  "name": "desafio-node-api",
+  "version": "1.0.0",
+  "description": "- [Desafio Data](#desafio-data)\r   - [Índice](#índice)\r   - [Resumo do projeto](#resumo-do-projeto)\r   - [Objetivos de aprendizagem](#objetivos-de-aprendizagem)\r   - [Orientações:](#orientações)\r   - [Critérios de aceitação](#critérios-de-aceitação)\r       - [Links utéis:](#links-utéis)\r   - [Dicas](#dicas)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.1.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "validator": "^13.11.0"
+  }
+}
