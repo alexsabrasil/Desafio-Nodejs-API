@@ -65,6 +65,10 @@ A autenticação utiliza os métodos POST e GET. Ações realizadas:
 
 ## Resultados e interface gráfica
 
+- Terminal VS CODE
+
+![Captura de tela 2024-01-22 234847](https://github.com/alexsabrasil/Desafio-Nodejs-API/assets/113733583/05bc222e-607a-4ed6-a0c4-23523f0a4bbb)
+
 - Testes no Postman
 
 ![post1](https://github.com/alexsabrasil/Desafio-Nodejs-API/assets/113733583/3755c72f-3b39-430d-aaa3-dc25952965ee)
@@ -73,7 +77,8 @@ A autenticação utiliza os métodos POST e GET. Ações realizadas:
 
 - Interface gráfica
 
-![form_login](https://github.com/alexsabrasil/Desafio-Nodejs-API/assets/113733583/ae8fda67-3972-4de3-be51-a5c55d4cd520)
+![Captura de tela 2024-01-22 232327](https://github.com/alexsabrasil/Desafio-Nodejs-API/assets/113733583/44397ce9-b4bc-46d5-968c-d0357f07eb6a)
+
 
 
 ## Contribuindo
