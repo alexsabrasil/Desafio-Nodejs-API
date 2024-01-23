@@ -67,6 +67,7 @@ A autenticação utiliza os métodos POST e GET. Ações realizadas:
 
 - Terminal VS CODE
 
+![Captura de tela 2024-01-22 234847](https://github.com/alexsabrasil/Desafio-Nodejs-API/assets/113733583/05bc222e-607a-4ed6-a0c4-23523f0a4bbb)
 
 - Testes no Postman
 
