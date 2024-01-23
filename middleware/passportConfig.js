@@ -1,61 +1,29 @@
 // middleware/passportConfig.js
-const bcrypt = require('bcrypt');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const User = require('../models/User');
 const keys = require('../config/keys');
 
-function passportConfig(passport) {
+const opts = {};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = keys.jwtSecret;
+
+function passportConfig(passport) { 
   passport.use(
-    new LocalStrategy(
-      {
-        usernameField: 'email',
-        passwordField: 'password',
-      },
-      async (email, password, done) => {
-        try {
-          const user = await User.findOne({ email });
-
-          if (!user) {
-            return done(null, false, { message: 'Usuário não encontrado.' });
+    new JwtStrategy(opts, (jwt_payload, done) => {
+      
+      User.findById(jwt_payload.user._id)
+        .then((user) => {
+          if (user) {
+            return done(null, user);
           }
-
-          const isMatch = await bcrypt.compare(password, user.password);
-
-          if (!isMatch) {
-            return done(null, false, { message: 'Senha incorreta.' });
-          }
-
-          return done(null, user);
-        } catch (error) {
-          return done(error);
-        }
-      }
-    )
-  );
-
-  passport.use(
-    new JwtStrategy(
-      {
-        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: keys.jwtSecret,
-      },
-      async (payload, done) => {
-        try {
-          const user = await User.findById(payload.user._id);
-
-          if (!user) {
-            return done(null, false);
-          }
-
-          return done(null, user);
-        } catch (error) {
-          return done(error, false);
-        }
-      }
-    )
+          return done(null, false);
+        })
+        .catch((err) => {
+          return done(err, false);
+        });
+    })
   );
 }
 
